@@ -1,8 +1,20 @@
 [package]
 name = "zero_to_prod"
 version = "0.1.0"
+authors = ["Joshua Rully <joshrully@gmail.com>"]
 edition = "2021"
+
+[lib]
+path = "src/lib.rs"
+
+# one library may have multiple binaries in one project via the below
+[[bin]]
+path = "src/main.rs"
+name = "zero_to_prod"
 
 [dependencies]
 actix-web = "4"
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+
+[dev-dependencies]
+reqwest = "0.11"
