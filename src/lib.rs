@@ -14,8 +14,8 @@ async fn health_check() -> HttpResponse {
 */
 #[derive(Deserialize)]
 struct FormData {
-    email: String,
-    name: String,
+    _email: String,
+    _name: String,
 }
 
 async fn subscribe(_form: web::Form<FormData>) -> HttpResponse {
