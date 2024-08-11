@@ -1,12 +1,24 @@
-// TODO: clean up import
-use actix_web::{dev::Server, *};
+use actix_web::{dev::Server, HttpResponse, HttpServer, web, App};
+use serde::Deserialize;
 use std::net::TcpListener;
 
 async fn health_check() -> HttpResponse {
     HttpResponse::Ok().finish()
 }
 
-async fn subscribe() -> HttpResponse {
+/*
+    serde does the heavylifting
+    it's responsible for genercally serializing and deserializing data structures
+    by providing a set of interfaces which they define as a data model
+    Refer to 'Understanding Serde' by Josh Mcguigan for more info. on serde
+*/
+#[derive(Deserialize)]
+struct FormData {
+    email: String,
+    name: String,
+}
+
+async fn subscribe(_form: web::Form<FormData>) -> HttpResponse {
     HttpResponse::Ok().finish()
 }
 
